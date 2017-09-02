@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    tools:context="app.roque.com.pizzapedidos.FormActivity">
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/form_tipoPizza"
+        android:textSize="20dp"/>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_below="@+id/txt_title"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:entries="@array/tipo_pizza"
+        android:layout_height="wrap_content"></Spinner>
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/form_tipoMasa"
+        android:textSize="20dp"/>
+    <RadioGroup
+        android:layout_below="@+id/txt2"
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioButtonClicked"
+            android:text="@string/form_tipo_masa1" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioButtonClicked"
+            android:text="@string/form_tipo_masa2" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:onClick="radioButtonClicked"
+            android:text="@string/form_tipo_masa3" />
+    </RadioGroup>
+    <TextView
+        android:id="@+id/txt3"
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/form_complementos_title"
+        android:textSize="20dp"/>
+
+    <CheckBox
+        android:layout_below="@+id/txt3"
+        android:layout_marginTop="10dp"
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="androidCheckBoxClicked"
+        android:text="@string/form_complementos1" />
+
+    <CheckBox
+        android:layout_below="@+id/checkBox"
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="androidCheckBoxClicked"
+        android:text="@string/form_complementos2" />
+
+    <TextView
+        android:id="@+id/txt4"
+        android:layout_below="@+id/checkBox"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/form_direccion_title"
+        android:textSize="20dp"/>
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:id="@+id/editText1"
+            android:layout_below="@+id/txt4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnOrdenar2"
+        android:layout_below="@+id/editText1"
+        android:background="@color/colorButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:text="@string/btn_Oredenar"
+        android:onClick="showDialog"/>
+
+</RelativeLayout>

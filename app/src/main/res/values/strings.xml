@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Pizza Pedidos</string>
+    <string name="btn_Oredenar">Ordenar</string>
+    <string name="form_tipoPizza">Tipo de Pizza</string>
+    <string name="form_tipoMasa">Tipo de masa</string>
+    <string name="form_tipo_masa1">Masa Gruesa</string>
+    <string name="form_tipo_masa2">Masa Delgada</string>
+    <string name="form_tipo_masa3">Masa Artesanal</string>
+    <string name="form_complementos_title">Complementos</string>
+    <string name="form_complementos1">Extra queso mozarella</string>
+    <string name="form_complementos2">Extra Jamón</string>
+    <string name="form_direccion_title">Direccion de envío</string>
+    <string-array name="tipo_pizza">
+        <item>Americana</item>
+        <item>Meat Lower</item>
+        <item>Hawaiana</item>
+        <item>Super Suprema</item>
+    </string-array>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.roque.com.pizzapedidos.InicioActivity">
+
+    <VideoView
+        android:id="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnOrdenar"
+        android:layout_margin="30dp"
+        android:layout_below="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorButtons"
+        android:drawableLeft="@drawable/ic_ordenar"
+        android:onClick="leftIconButton"
+        android:padding="10dp"
+        android:textSize="35dp"
+        android:textColor="@android:color/white"
+        android:text="Ordenar" />
+
+</RelativeLayout>

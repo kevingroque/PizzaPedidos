@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -34,6 +35,7 @@ public class FormActivity extends AppCompatActivity {
     private Pedidos p1 = new Pedidos();
     private int extra1,extra2,total;
     private String tipopizza;
+    private EditText direccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class FormActivity extends AppCompatActivity {
         radioGroup =  (RadioGroup) findViewById(R.id.radioGroup);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         spinnerPizza = (Spinner)findViewById(R.id.spinner);
+        direccion = (EditText)findViewById(R.id.direccion);
 
         spinnerPizza.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -129,42 +132,48 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void showDialog(View view){
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Confirmación del pedido");
-        alertDialog.setMessage("Su pedido de pizza"+ p1.getTipo()+" con "+p1.getMaza()+" a S/."+total+".00 + IGV esta en proceso de envio");
-        // Alert dialog button
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Aceptar",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Alert dialog action goes here
-                        dialog.dismiss();// use dismiss to cancel alert dialog
-                    }
-                });
-        alertDialog.show();
+        String dir = direccion.getText().toString();
+        if(dir.isEmpty()){
+            direccion.setError("Es obligatorio rellenar este campo");
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(FormActivity.this, InicioActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }else{
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Confirmación del pedido");
+            alertDialog.setMessage("Su pedido de pizza"+ p1.getTipo()+" con "+p1.getMaza()+" a S/."+total+".00 + IGV esta en proceso de envio");
+            // Alert dialog button
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Aceptar",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Alert dialog action goes here
+                            dialog.dismiss();// use dismiss to cancel alert dialog
+                        }
+                    });
+            alertDialog.show();
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(FormActivity.this, 100, intent, PendingIntent.FLAG_ONE_SHOT);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(FormActivity.this, InicioActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                // Notification
-                Notification notification = new NotificationCompat.Builder(FormActivity.this)
-                        .setContentTitle("PIZZA PEDIDOS")
-                        .setContentText("Su pizza "+p1.getTipo()+" esta en proceso de envio")
-                        .setSmallIcon(R.drawable.bg_pizza)
-                        .setColor(ContextCompat.getColor(FormActivity.this, R.color.colorButtons))
-                        .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                        .setContentIntent(pendingIntent)
-                        .setAutoCancel(true)
-                        .build();
+                    PendingIntent pendingIntent = PendingIntent.getActivity(FormActivity.this, 100, intent, PendingIntent.FLAG_ONE_SHOT);
 
-                // Notification manager
-                NotificationManager notificationManager = (NotificationManager) FormActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
-                notificationManager.notify(100, notification);
-            }
-        },10000);
+                    // Notification
+                    Notification notification = new NotificationCompat.Builder(FormActivity.this)
+                            .setContentTitle("PIZZA PEDIDOS")
+                            .setContentText("Su pizza "+p1.getTipo()+" esta en proceso de envio")
+                            .setSmallIcon(R.drawable.bg_pizza)
+                            .setColor(ContextCompat.getColor(FormActivity.this, R.color.colorButtons))
+                            .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true)
+                            .build();
+
+                    // Notification manager
+                    NotificationManager notificationManager = (NotificationManager) FormActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(100, notification);
+                }
+            },10000);
+        }
     }
 }

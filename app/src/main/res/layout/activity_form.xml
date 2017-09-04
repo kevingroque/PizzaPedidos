@@ -95,14 +95,14 @@
 
         <EditText
             android:layout_marginTop="10dp"
-            android:id="@+id/editText1"
+            android:id="@+id/direccion"
             android:layout_below="@+id/txt4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnOrdenar2"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/direccion"
         android:background="@color/colorButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
